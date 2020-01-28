@@ -8,7 +8,7 @@ softdepend: ["AntiSpamPro"]
 extensions: [sqlite3]
 commands:
   f:
-    description: use /f help for help
+    description: use /f help for a list of commands.
     permission: f.command
 permissions:
   f.command:
