@@ -19,6 +19,8 @@ Claim plots and create a dominating base
 
 Three ranks: Member, Officer and Leader
 
+Modded by xAndrei52.
+
 ### Commands
 
 ```
