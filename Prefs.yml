@@ -12,10 +12,10 @@ PowerGainedPerKillingAnEnemy: 5
 PowerGainedPerAlly: 130
 AllowOpToChangeFactionPower: true
 TheDefaultPowerEveryFactionStartsWith: 50
-EnableOverClaim: true
+EnableOverClaim: false
 OverClaimCostsPower: false
 AllyLimitPerFaction: 4
-ClaimWorlds: []
+ClaimWorlds: [fworld]
 AllowChat: true
 AllowFactionPvp: false
 AllowAlliedPvp: false
