@@ -23,12 +23,12 @@ class FactionCommands {
             return true;
         }
         if (strtolower($args[0]) == "help") {
-            $sender->sendMessage(TextFormat::RED . "\n/f about\n/f accept\n/f overclaim [Takeover the plot of the requested faction]\n/f claim\n/f create <name>\n/f del\n/f demote <player>\n/f deny");
-            $sender->sendMessage(TextFormat::RED . "\n/f home\n/f help <page>\n/f info\n/f info <faction>\n/f invite <player>\n/f kick <player>\n/f leader <player>\n/f leave");
-            $sender->sendMessage(TextFormat::RED . "\n/f sethome\n/f unclaim\n/f unsethome\n/f ourmembers - {Members + Statuses}\n/f ourofficers - {Officers + Statuses}\n/f ourleader - {Leader + Status}\n/f allies - {The allies of your faction");
-            $sender->sendMessage(TextFormat::RED . "\n/f desc\n/f promote <player>\n/f allywith <faction>\n/f breakalliancewith <faction>\n\n/f allyok [Accept a request for alliance]\n/f allyno [Deny a request for alliance]\n/f allies <faction> - {The allies of your chosen faction}");
-            $sender->sendMessage(TextFormat::RED . "\n/f membersof <faction>\n/f officersof <faction>\n/f leaderof <faction>\n/f say <send message to everyone in your faction>\n/f pf <player>\n/f topfactions");
-            $sender->sendMessage(TextFormat::RED . "\n/f forceunclaim <faction> [Unclaim a faction plot by force - OP]\n\n/f forcedelete <faction> [Delete a faction by force - OP]");
+            $sender->sendMessage(TextFormat::BLUE . "\n/f about\n/f accept\n/f overclaim [Takeover the plot of the requested faction]\n/f claim\n/f create <name>\n/f del\n/f demote <player>\n/f deny");
+            $sender->sendMessage(TextFormat::BLUE . "\n/f home\n/f help <page>\n/f info\n/f info <faction>\n/f invite <player>\n/f kick <player>\n/f leader <player>\n/f leave");
+            $sender->sendMessage(TextFormat::BLUE . "\n/f sethome\n/f unclaim\n/f unsethome\n/f ourmembers - {Members + Statuses}\n/f ourofficers - {Officers + Statuses}\n/f ourleader - {Leader + Status}\n/f allies - {The allies of your faction");
+            $sender->sendMessage(TextFormat::BLUE . "\n/f desc\n/f promote <player>\n/f allywith <faction>\n/f breakalliancewith <faction>\n\n/f allyok [Accept a request for alliance]\n/f allyno [Deny a request for alliance]\n/f allies <faction> - {The allies of your chosen faction}");
+            $sender->sendMessage(TextFormat::BLUE . "\n/f membersof <faction>\n/f officersof <faction>\n/f leaderof <faction>\n/f say <send message to everyone in your faction>\n/f pf <player>\n/f topfactions");
+            $sender->sendMessage(TextFormat::BLUE . "\n/f forceunclaim <faction> [Unclaim a faction plot by force - OP]\n\n/f forcedelete <faction> [Delete a faction by force - OP]");
             return true;
         }
         if (!$sender instanceof Player || ($sender->isOp() && $this->plugin->prefs->get("AllowOpToChangeFactionPower"))) {
@@ -146,7 +146,7 @@ class FactionCommands {
 
             if ($args[0] == "create") {
                 if (!isset($args[1])) {
-                    $sender->sendMessage($this->plugin->formatMessage("Usage: /f create <faction name>"));
+                    $sender->sendMessage($this->plugin->formatMessage("Usage: /f create <gang name>"));
                     return true;
                 }
                 if (!($this->alphanum($args[1]))) {
@@ -158,7 +158,7 @@ class FactionCommands {
                     return true;
                 }
                 if ($this->plugin->factionExists($args[1])) {
-                    $sender->sendMessage($this->plugin->formatMessage("The Faction already exists"));
+                    $sender->sendMessage($this->plugin->formatMessage("The Gang already exists"));
                     return true;
                 }
                 if (strlen($args[1]) > $this->plugin->prefs->get("MaxFactionNameLength")) {
@@ -179,7 +179,7 @@ class FactionCommands {
                     $this->plugin->updateAllies($factionName);
                     $this->plugin->setFactionPower($factionName, $this->plugin->prefs->get("TheDefaultPowerEveryFactionStartsWith"));
                     $this->plugin->updateTag($sender->getName());
-                    $sender->sendMessage($this->plugin->formatMessage("Faction created", true));
+                    $sender->sendMessage($this->plugin->formatMessage("Gang created", true));
                     return true;
                 }
             }
@@ -246,7 +246,7 @@ class FactionCommands {
                     return true;
                 }
                 if ($this->plugin->getPlayerFaction($playerName) != $this->plugin->getPlayerFaction($args[1])) {
-                    $sender->sendMessage($this->plugin->formatMessage("Add player to faction first"));
+                    $sender->sendMessage($this->plugin->formatMessage("Add player to gang first"));
                     return true;
                 }
                 if (!($this->plugin->getServer()->getPlayerExact($args[1]) instanceof Player)) {
@@ -696,7 +696,7 @@ class FactionCommands {
                         $sender->sendMessage($this->plugin->formatMessage("You are not leader!"));
                     }
                 } else {
-                    $sender->sendMessage($this->plugin->formatMessage("You are not in a faction!"));
+                    $sender->sendMessage($this->plugin->formatMessage("You are not in a gang! please create one or join a gang."));
                 }
             }
 
